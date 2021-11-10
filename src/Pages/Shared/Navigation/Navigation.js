@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../../../images/logo.png'
+import { NavLink } from 'react-router-dom';
 
 
 const Navigation = () => {
@@ -56,8 +57,7 @@ const Navigation = () => {
           <Button sx={{color:'black'}}>Products</Button>
           <Button sx={{color:'black'}}>Catalog</Button>
           <Button sx={{color:'black'}}>Shape</Button>
-          
-          <Button color="inherit" style={{color: 'black'}}>Login</Button>
+          <Button><NavLink style={{textDecoration: 'none', color: 'black'}} to="/login">Login</NavLink></Button>
         </Toolbar>
       </AppBar>
     </Box>

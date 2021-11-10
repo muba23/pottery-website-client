@@ -7,6 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 const background = {
     background: `url(${bannerBackground})`,
@@ -30,7 +31,7 @@ const Banner = () => {
                             A Provocative and Divergent Contemporary Conceptual Approach towards pottery industry.
                             </Typography>
                         
-                            <Button sx={{m:1, p: 2, backgroundColor: '#1a1a1a'}}variant="contained">Explore More</Button>
+                            <Button sx={{m:1, p: 2, backgroundColor: '#1a1a1a'}}variant="contained"><Link style={{textDecoration: 'none' , color: 'white'}} to="/login">Explore More</Link></Button>
                            </Box>
     </Box>
         
