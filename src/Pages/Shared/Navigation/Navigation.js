@@ -8,9 +8,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../../../images/logo.png'
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 
 const Navigation = () => {
+    const {user, logOut} = useAuth();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -54,10 +57,16 @@ const Navigation = () => {
         <MenuItem><Button sx={{color:'black'}}>Catalog</Button></MenuItem>
         <MenuItem><Button sx={{color:'black'}}>Contact Us</Button></MenuItem>
       </Menu>
-          <Button sx={{color:'black'}}>Products</Button>
+          <Button><NavLink to="/products" style={{color:'black', textDecoration: 'none'}}>Products</NavLink></Button>
           <Button sx={{color:'black'}}>Catalog</Button>
           <Button sx={{color:'black'}}>Shape</Button>
-          <Button><NavLink style={{textDecoration: 'none', color: 'black'}} to="/login">Login</NavLink></Button>
+
+          {
+            user?.email ?
+            <Button style={{textDecoration: 'none', color: 'black'}} onClick={logOut}>Logout</Button>
+            :
+            <Button><NavLink style={{textDecoration: 'none', color: 'black'}} to="/login">Login</NavLink></Button>
+          }
         </Toolbar>
       </AppBar>
     </Box>
