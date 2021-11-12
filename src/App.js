@@ -8,8 +8,12 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
-import Products from './Pages/Products/Products';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import PurchaseDetails from './Pages/PurchaseDetails/PurchaseDetails';
+import MyOrders from './Pages/Login/MyOrders/MyOrders';
+import AddProducts from './Pages/AddProducts/AddProducts';
+import Products from './Pages/Home/Products/Products';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 
 function App() {
@@ -33,6 +37,18 @@ function App() {
             <PrivateRoute path="/products">
                 <Products></Products>
             </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+                <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/purchase">
+                <PurchaseDetails></PurchaseDetails>
+            </PrivateRoute>
+            <Route path="/myOrders">
+                <MyOrders></MyOrders>
+            </Route>
+            <Route path="/addProducts">
+                <AddProducts></AddProducts>
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>

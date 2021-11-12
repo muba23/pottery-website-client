@@ -1,7 +1,5 @@
 import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import pottery from '../../../images/pottery.png'
-import pot from '../../../images/pottery-1.png'
 import loginPot from '../../../images/login-pot.png'
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';

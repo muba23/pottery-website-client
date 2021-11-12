@@ -1,12 +1,10 @@
+import { Alert, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import { Container, Typography } from '@mui/material';
+import Footer from '../../Shared/Footer/Footer';
+import Navigation from '../../Shared/Navigation/Navigation';
 import Product from '../Product/Product';
 
-
-const HomeProducts = () => {
+const Products = () => {
     const [products, setProducts]= useState([]);
 
     useEffect(()=>{
@@ -19,11 +17,11 @@ const HomeProducts = () => {
         <div>  
             <Container sx={{my:5}}>
                 <Typography variant="h4" sx={{mb:2}}>
-                    Explore Our Products
+                    Our Products
                 </Typography>
                 <Grid container spacing={2}>
                 {
-                    products.slice(0,6).map(product=> <Product
+                    products.map(product=> <Product
                     key={product.id}
                     product={product}
                     ></Product> )
@@ -34,4 +32,4 @@ const HomeProducts = () => {
     );
 };
 
-export default HomeProducts;
+export default Products;

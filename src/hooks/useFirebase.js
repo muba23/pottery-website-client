@@ -21,15 +21,15 @@ const useFirebase = () =>{
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             setAuthError('');
-        //     const newUser = {email, displayName: name};
-        //     setUser(newUser);
-        //     saveUser(email, name, 'POST');
-        //     updateProfile(auth.currentUser, {
-        //         displayName: name
-        //       }).then(() => {
-        //       }).catch((error) => {
-        //       });
-        //     history.replace('/');
+            const newUser = {email, displayName: name};
+            setUser(newUser);
+            // saveUser(email, name, 'POST');
+            updateProfile(auth.currentUser, {
+                displayName: name
+              }).then(() => {
+              }).catch((error) => {
+              });
+            history.replace('/');
          })
           .catch((error) => {
             setAuthError(error.message);

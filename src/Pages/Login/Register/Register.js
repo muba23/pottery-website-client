@@ -20,7 +20,7 @@ const Register = () => {
             alert("Password didn't match");
             return;
         }
-        registerUser(data.email, data.password);
+        registerUser( data.email, data.password);
         e.preventDefault();
     }
     return (
@@ -31,11 +31,8 @@ const Register = () => {
                     Registration
                 </Typography>
                 { !isLoading && <form onSubmit={loginSubmit}>
-                   {/* <TextField sx={{width: '75%', margin: 2}} id="standard-basic" type="name" label="Your Name" name="name" onChange={onChange} variant="standard" /> */}
-
+                    
                    <TextField sx={{width: '75%', margin: 2}} id="standard-basic" type="email" label="Your Email Address" name="email" onChange={onChange} variant="standard" />
-
-                   <TextField sx={{width: '75%', margin: 2}} id="standard-basic" type="phone" label="Your Phone Number" name="phone" onChange={onChange} variant="standard" />
 
                    <TextField sx={{width: '75%', margin: 2}} id="standard-basic" name="password" onChange={onChange} type="password" label="Password" variant="standard" />
 

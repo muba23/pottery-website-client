@@ -63,7 +63,11 @@ const Navigation = () => {
 
           {
             user?.email ?
-            <Button style={{textDecoration: 'none', color: 'black'}} onClick={logOut}>Logout</Button>
+            <div>
+              <Button><NavLink style={{textDecoration: 'none', color: 'black'}} to="/dashboard">DashBoard</NavLink></Button>
+
+              <Button style={{textDecoration: 'none', color: 'black'}} onClick={logOut}>Logout</Button>
+            </div>
             :
             <Button><NavLink style={{textDecoration: 'none', color: 'black'}} to="/login">Login</NavLink></Button>
           }
