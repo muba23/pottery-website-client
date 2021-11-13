@@ -16,7 +16,7 @@ const MyOrders = () => {
     const [control, setControl] = useState(false);
 
     useEffect(()=>{
-        const url = `http://localhost:5000/myOrders?email=${user.email}`
+        const url = `https://vast-oasis-50516.herokuapp.com/myOrders?email=${user.email}`
         fetch(url)
             .then(res=>res.json())
             .then(data=> setMyOrders(data))
@@ -24,7 +24,7 @@ const MyOrders = () => {
 
     const handleDeleteOrder = (id)=>{
         alert('Delete the product?')
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://vast-oasis-50516.herokuapp.com/deleteOrder/${id}`, {
             method: 'DELETE'
         })
             .then(res=>res.json())

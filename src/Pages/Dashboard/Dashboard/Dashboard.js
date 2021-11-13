@@ -29,6 +29,7 @@ import {
 import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageOrders from '../ManageOrders/ManageOrders';
+import Review from '../Review/Review';
 
 
 const drawerWidth = 200;
@@ -36,6 +37,7 @@ const drawerWidth = 200;
 function Dashboard(props) {
   const [control, setControl] = useState("");
   const { window } = props;
+  const {user, logOut} = useAuth();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   let { path, url } = useRouteMatch();
@@ -63,7 +65,7 @@ function Dashboard(props) {
             <Button><NavLink to={`${url}/myOrders`} style={{color:'white', textDecoration: 'none'}}>My Orders</NavLink></Button>
             <br />
 
-            <Button><NavLink to={`${url}/review`} style={{color:'white', textDecoration: 'none'}}>Review</NavLink></Button>
+            <Button><NavLink to={`${url}/reviews`} style={{color:'white', textDecoration: 'none'}}>Review</NavLink></Button>
             <br />
         </Box>}
 
@@ -82,7 +84,7 @@ function Dashboard(props) {
             <br />
         </Box>}
 
-      <Button><NavLink to="/" style={{color:'white', textDecoration: 'none'}}>Log out</NavLink></Button>
+      <Button onClick={logOut}><NavLink to="/" style={{color:'white', textDecoration: 'none'}}>Log out</NavLink></Button>
       <br />
 
           
@@ -139,6 +141,9 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
+        <Typography variant="caption" >
+          You are signed in as <span style={{color:"red"}}>{user.email}</span> !!
+        </Typography>
         
         <Switch>
           <Route exact path={path}>
@@ -152,6 +157,9 @@ function Dashboard(props) {
           </Route>
           <Route path={`${path}/products`}>
             <ManageProducts></ManageProducts>
+          </Route>
+          <Route path={`${path}/reviews`}>
+            <Review></Review>
           </Route>
           {/* <Route path={`${path}/pay`}>
             <Pay></Pay>

@@ -22,14 +22,15 @@ const ManageOrders = () => {
     }
 
     useEffect(()=>{
-        const url = 'http://localhost:5000/manageOrders'
+        const url = 'https://vast-oasis-50516.herokuapp.com/manageOrders'
         fetch(url)
             .then(res=>res.json())
             .then(data=> setOrders(data))
     },[control]);
 
     const handleUpdate = id =>{
-        fetch(`http://localhost:5000/updateStatus/${id}`,{
+        alert('Status updated');
+        fetch(`https://vast-oasis-50516.herokuapp.com/updateStatus/${id}`,{
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'
@@ -37,12 +38,12 @@ const ManageOrders = () => {
             body: JSON.stringify({status})
         })
         .then(res=>res.json())
-        .then()
+        .then(data=>setStatus(data))
     }
 
     const handleDeleteOrder = (id)=>{
         alert('Delete the product?')
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://vast-oasis-50516.herokuapp.com/deleteOrder/${id}`, {
             method: 'DELETE'
         })
             .then(res=>res.json())

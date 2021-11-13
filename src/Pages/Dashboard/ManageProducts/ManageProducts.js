@@ -17,14 +17,14 @@ const ManageProducts = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/products")
+        fetch("https://vast-oasis-50516.herokuapp.com/products")
           .then((res) => res.json())
           .then((data) => setProducts(data));
       }, [control]);
 
       const handleDeleteOrder = (id)=>{
         alert('Delete the product?')
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://vast-oasis-50516.herokuapp.com/deleteOrder/${id}`, {
             method: 'DELETE'
         })
             .then(res=>res.json())
@@ -34,7 +34,7 @@ const ManageProducts = () => {
                 }
             })
     };
-    
+
     return (
         <div>
             <TableContainer component={Paper}>

@@ -58,8 +58,6 @@ const Navigation = () => {
         <MenuItem><Button sx={{color:'black'}}>Contact Us</Button></MenuItem>
       </Menu>
           <Button><NavLink to="/products" style={{color:'black', textDecoration: 'none'}}>Products</NavLink></Button>
-          <Button sx={{color:'black'}}>Catalog</Button>
-          <Button sx={{color:'black'}}>Shape</Button>
 
           {
             user?.email ?

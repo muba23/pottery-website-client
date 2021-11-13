@@ -25,7 +25,7 @@ const PurchaseDetails = () => {
   }
 
   useEffect(()=>{
-      fetch(`http://localhost:5000/singleProduct/${productId}`)
+      fetch(`https://vast-oasis-50516.herokuapp.com/singleProduct/${productId}`)
         .then(res=>res.json())
         .then(data=>setProduct(data))
   }, []);
@@ -41,7 +41,7 @@ const PurchaseDetails = () => {
         productPrice: product.price
       }
     
-      fetch('http://localhost:5000/placeOrder', {
+      fetch('https://vast-oasis-50516.herokuapp.com/placeOrder', {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'

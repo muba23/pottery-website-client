@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, getIdToken } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword,  updateProfile } from "firebase/auth";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -12,8 +12,6 @@ const useFirebase = () =>{
     const [token, setToken] = useState('');
 
     const auth = getAuth();
-
-    const googleProvider = new GoogleAuthProvider();
 
 //register user
     const registerUser = (email, password, name, history) =>{
@@ -54,31 +52,10 @@ const useFirebase = () =>{
             .finally(() => setIsLoading(false));  
                 }
 
-    //google sign in
-    // const signInWithGoogle = (location, history) =>{
-    //     setIsLoading(true);
-    //     signInWithPopup(auth, googleProvider)
-    //     .then((result) => {
-    //         const user = result.user;
-    //         saveUser(user.email, user.displayName, 'PUT');
-    //         setAuthError('');
-    //         const destination = location?.state?.from || '/';
-    //         history.replace(destination);
-
-    //       }).catch((error) => {
-    //         setAuthError(error.message);
-    //       })
-    //       .finally(() => setIsLoading(false)); 
-    // }
-
     useEffect(()=>{
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                // getIdToken(user)
-                // .then(idToken =>{
-                //   setToken(idToken);
-                // })
             } else {
                 setUser({})
             }
@@ -88,7 +65,7 @@ const useFirebase = () =>{
     },[auth])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://vast-oasis-50516.herokuapp.com/users/${user.email}`)
           .then(res=>res.json())
           .then(data=> setAdmin(data.admin))
     },[user.email])
@@ -104,7 +81,7 @@ const useFirebase = () =>{
 
     const saveUser = (email, displayName, method) =>{
         const user = {email, displayName};
-        fetch('http://localhost:5000/users', {
+        fetch('https://vast-oasis-50516.herokuapp.com/users', {
           method: method,
           headers: {
             'content-type': 'application/json'
@@ -117,11 +94,9 @@ const useFirebase = () =>{
     return {
         user,
         admin,
-        // token,
         isLoading,
         authError,
         registerUser,
-        // signInWithGoogle,
         logOut,
         loginUser
     }

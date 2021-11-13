@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 const AddProducts = () => {
     const { register, handleSubmit, reset} = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/addProducts',{
+        fetch('https://vast-oasis-50516.herokuapp.com/addProducts',{
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -44,13 +44,6 @@ const AddProducts = () => {
                 {...register("image", { required: true })}
                 placeholder="Image Link"
                 />
-            
-            {/* <input type="number" {...register("age")} />
-            <select {...register("gender")}>
-                <option value="female">female</option>
-                <option value="male">male</option>
-                <option value="other">other</option>
-            </select> */}
             <Button sx={{width: '50%', backgroundColor: 'black'}} type="submit" variant="contained">Submit</Button>
        </form>
         </Container>
