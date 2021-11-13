@@ -86,6 +86,8 @@ function Dashboard(props) {
 
       <Button onClick={logOut}><NavLink to="/" style={{color:'white', textDecoration: 'none'}}>Log out</NavLink></Button>
       <br />
+      <Button><NavLink to="/" style={{color:'white', textDecoration: 'none'}}>Go to Homepage</NavLink></Button>
+      <br />
 
           
       <List>
