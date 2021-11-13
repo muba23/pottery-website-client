@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
 import TextField from '@mui/material/TextField';
+import { NavLink } from 'react-router-dom';
 
 
 const PurchaseDetails = () => {
@@ -117,7 +118,9 @@ const PurchaseDetails = () => {
                 onBlur={handleOnBlur}
                 size="small"
            />
-           <Button sx={{width: '70%', backgroundColor: 'black'}} onClick={handlePurchaseSubmit} type="submit" variant="contained">Place Order</Button>
+           <Button sx={{width: '70%', backgroundColor: 'black', mb: 5}} onClick={handlePurchaseSubmit} type="submit" variant="contained">Place Order</Button>
+            <br />
+            <Button><NavLink style={{textDecoration: 'none', color: 'blue'}} to="/dashboard">GO TO DASHBOARD</NavLink></Button>
             
           </Grid>
         </Grid>

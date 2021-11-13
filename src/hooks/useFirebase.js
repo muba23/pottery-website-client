@@ -23,13 +23,13 @@ const useFirebase = () =>{
             setAuthError('');
             const newUser = {email, displayName: name};
             setUser(newUser);
-            // saveUser(email, name, 'POST');
+            saveUser(email, name, 'POST');
             updateProfile(auth.currentUser, {
                 displayName: name
               }).then(() => {
               }).catch((error) => {
               });
-            history.replace('/');
+            history.replace('/home');
          })
           .catch((error) => {
             setAuthError(error.message);
@@ -44,6 +44,7 @@ const useFirebase = () =>{
         .then((userCredential) => {
             const destination = location?.state?.from || '/';
             history.replace(destination);
+            saveUser(user.email, user.displayName, 'PUT');
             setAuthError('');
             })
             .catch((error) => {
@@ -60,7 +61,7 @@ const useFirebase = () =>{
     //     .then((result) => {
     //         const user = result.user;
     //         saveUser(user.email, user.displayName, 'PUT');
-    //         setAuthErro r('');
+    //         setAuthError('');
     //         const destination = location?.state?.from || '/';
     //         history.replace(destination);
 
@@ -86,11 +87,11 @@ const useFirebase = () =>{
           return () => unsubscribed;
     },[auth])
 
-    // useEffect(()=>{
-    //     fetch(`http://localhost:5000/users/${user.email}`)
-    //       .then(res=>res.json())
-    //       .then(data=> setAdmin(data.admin))
-    // },[user.email])
+    useEffect(()=>{
+        fetch(`http://localhost:5000/users/${user.email}`)
+          .then(res=>res.json())
+          .then(data=> setAdmin(data.admin))
+    },[user.email])
 
     //logout
     const logOut = () =>{
@@ -101,17 +102,17 @@ const useFirebase = () =>{
           .finally(()=> setIsLoading(false));       
     }
 
-    // const saveUser = (email, displayName, method) =>{
-    //     const user = {email, displayName};
-    //     fetch('http://localhost:5000/users', {
-    //       method: method,
-    //       headers: {
-    //         'content-type': 'application/json'
-    //       },
-    //       body: J SON.stringify(user)
-    //     })
-    //     .then()
-    // }
+    const saveUser = (email, displayName, method) =>{
+        const user = {email, displayName};
+        fetch('http://localhost:5000/users', {
+          method: method,
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+        .then()
+    }
 
     return {
         user,

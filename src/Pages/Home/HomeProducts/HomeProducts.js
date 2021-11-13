@@ -17,9 +17,9 @@ const HomeProducts = () => {
 
     return (
         <div>  
-            <Container sx={{my:5}}>
+            <Container sx={{my:10}}>
                 <Typography variant="h4" sx={{mb:2}}>
-                    Explore Our Products
+                    Explore Our <span style={{color: 'orange'}}>Exclusive</span> Products
                 </Typography>
                 <Grid container spacing={2}>
                 {

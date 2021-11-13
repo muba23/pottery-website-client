@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import loginPot from '../../../images/login-pot.png'
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Register = () => {
     const [data, setData] = useState({});
@@ -24,7 +25,9 @@ const Register = () => {
         e.preventDefault();
     }
     return (
-        <Container>
+        <div>
+            <Navigation></Navigation>
+            <Container>
             <Grid container spacing={2} sx={{mt:3}}>
                 <Grid item xs={12} md={6} sx={{mt:2}}>
                 <Typography variant="h6" gutterBottom component="div">
@@ -57,6 +60,7 @@ const Register = () => {
                 </Grid>
             </Grid>
             </Container>
+        </div>
     );
 };
 
